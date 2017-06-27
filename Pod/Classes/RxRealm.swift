@@ -232,10 +232,10 @@ public extension ObservableType where E: NotificationEmitter, E.ElementType: Obj
      - returns: `Observable<(Array<E.Element>, RealmChangeset?)>`
      */
     public static func arrayWithChangeset(from collection: E, synchronousStart: Bool = true)
-        -> Observable<(Array<E.ElementType>, RealmChangeset?)> {
+		-> Observable<(array: Array<E.ElementType>, changeset: RealmChangeset?)> {
 
         return Observable.changeset(from: collection)
-            .map { ($0.toArray(), $1) }
+			.map { (array: $0.toArray(), changeset: $1) }
     }
 }
 
